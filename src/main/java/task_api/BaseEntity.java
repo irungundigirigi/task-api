@@ -16,6 +16,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @MappedSuperclass
+@Getter
+@Setter
 public abstract class BaseEntity {
 
     @Id
@@ -28,7 +30,8 @@ public abstract class BaseEntity {
     @UpdateTimestamp
     private Date updated_at;
 
-       public Long getId() {
+    /** 
+    public Long getId() {
         return id;
     }
 
@@ -39,5 +42,6 @@ public abstract class BaseEntity {
     public Date getUpdated_at() {
         return updated_at;
     }
+    */
 
 }
