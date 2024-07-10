@@ -1,5 +1,7 @@
 package task_api;
 
+import lombok.Getter;
+import lombok.Setter;
 
 import jakarta.persistence.Entity;
 
@@ -7,6 +9,8 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
 public class Task extends BaseEntity {
 
     
@@ -24,7 +28,7 @@ public class Task extends BaseEntity {
 
     public Task() {
     }
-
+/** 
     public String getObject() {
         return object;
     }
@@ -71,4 +75,5 @@ public class Task extends BaseEntity {
     public void setDue_date(String due_date) {
         this.due_date = due_date;
     }
+*/
 }
