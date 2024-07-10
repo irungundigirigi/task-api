@@ -32,7 +32,7 @@ class TaskController {
 
     @GetMapping("/tasks/{id}")
     Task one(@PathVariable Long id) {
-        return repository.findById(id)
+        return repository.findById(id);
             //.orElseThrow(() -> new TaskNotFoundException(id));
     }
 }
