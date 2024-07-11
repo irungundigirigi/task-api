@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Data
-public class Task extends BaseEntity {
+public class Task extends BaseModel {
 
     private String object;
     private String task_priority;
