@@ -25,7 +25,7 @@ public class TaskService {
         return savedTask;
     }
 
-    public Optional<Task> findById(Long id) {
+    public Optional<Task> findById(UUID id) {
         return taskRepository.findById(id);
 }
 
