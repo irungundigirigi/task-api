@@ -1,6 +1,7 @@
 package task_api;
 
 import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * eg findAll() findById()
  */
 
-interface TaskRepository extends JpaRepository<Task, Long> {
+interface TaskRepository extends JpaRepository<Task, UUID> {
 
 }
