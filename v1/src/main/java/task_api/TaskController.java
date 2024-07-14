@@ -2,7 +2,7 @@ package task_api;
 
 import java.util.List;
 import java.util.Optional;
-
+import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 
 @RestController
 @RequestMapping("/api/v1")
 public class TaskController {
     
-    private final TaskService taskService;
+    @Autowired
+    TaskService taskService;
 
-    TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
     /**
      * This method is called when a POST request is made
      * URL: {hostname}/api/v1/tasks
@@ -55,7 +56,7 @@ public class TaskController {
      * @return Task
     */
     @GetMapping("/tasks/{id}")
-    public Task getByID(@PathVariable Long id) {
+    public Task getByID(@PathVariable UUID id) {
         Optional<Task> task = taskService.findById(id);
         if(task.isPresent()) {
             return task.get();
