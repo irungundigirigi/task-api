@@ -23,12 +23,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Data
 public abstract class BaseModel {
 
-    /*
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    */
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
