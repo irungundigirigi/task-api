@@ -2,8 +2,15 @@ package task_api.service;
 
 import task_api.repository.TaskRepository;
 import task_api.models.Task;
+import task_api.exception.TaskNotFoundException;
 
 import org.springframework.stereotype.Service; 
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+
+
 
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +25,9 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task>  getAllTasks() {
-        return taskRepository.findAll();
+    public Page<Task>  getTasks(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return taskRepository.findAll(pageable);
     }
 
     public Task saveTask(Task task) {

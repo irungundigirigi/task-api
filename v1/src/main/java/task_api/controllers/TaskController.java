@@ -6,10 +6,13 @@ import java.util.UUID;
 
 import task_api.service.TaskService;
 import task_api.exception.TaskNotFoundException;
+import org.springframework.data.domain.Page;
+
 import task_api.models.Task;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,8 +51,11 @@ public class TaskController {
      * @return List of Tasks
     */
     @GetMapping("/tasks")
-    public ResponseEntity<List<Task>> getAllTasks(){
-        List<Task> tasks = taskService.getAllTasks();
+    public ResponseEntity<Page<Task>> getAllTasks(
+        @RequestParam(defaultValue = "0") int pageNo,
+        @RequestParam(defaultValue = "3") int pageSize
+    ){
+        Page<Task> tasks = taskService.getTasks(pageNo, pageSize);
         return ResponseEntity.ok().body(tasks);
     }
 
@@ -59,7 +65,7 @@ public class TaskController {
      * Purpose: Fetches specific task table with id {id}
      * @return Task
     */
-     @GetMapping("/tasks/{id}")
+    @GetMapping("/tasks/{id}")
     public Task getByID(@PathVariable UUID id) {
         Optional<Task> task = taskService.findById(id);
         return task.orElseThrow(() -> new TaskNotFoundException(id));
