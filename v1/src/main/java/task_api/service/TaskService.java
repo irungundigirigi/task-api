@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.List;
@@ -19,11 +20,8 @@ import java.util.UUID;
 @Service
 public class TaskService {
 
-    private final TaskRepository taskRepository;
-
-    TaskService(TaskRepository taskRepository){
-        this.taskRepository = taskRepository;
-    }
+    @Autowired
+    TaskRepository taskRepository;
 
     public Page<Task>  getTasks(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
