@@ -53,7 +53,7 @@ public class TaskController {
     @GetMapping("/tasks")
     public ResponseEntity<Page<Task>> getAllTasks(
         @RequestParam(defaultValue = "0") int pageNo,
-        @RequestParam(defaultValue = "3") int pageSize
+        @RequestParam(defaultValue = "10") int pageSize
     ){
         Page<Task> tasks = taskService.getTasks(pageNo, pageSize);
         return ResponseEntity.ok().body(tasks);
@@ -66,9 +66,17 @@ public class TaskController {
      * @return Task
     */
     @GetMapping("/tasks/{id}")
-    public Task getByID(@PathVariable UUID id) {
+    /** public Task getByID(@PathVariable UUID id) {
         Optional<Task> task = taskService.findById(id);
         return task.orElseThrow(() -> new TaskNotFoundException(id));
+    */
+    public ResponseEntity<?> getByID(@PathVariable UUID id) {
+    
+        Optional<Task> task = taskService.findById(id);
+        return task.map(ResponseEntity::ok)
+            .orElseThrow(() -> new TaskNotFoundException(id));
+  
+    
     }
 }
 
