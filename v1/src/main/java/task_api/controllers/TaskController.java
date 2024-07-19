@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
@@ -38,16 +39,10 @@ public class TaskController {
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
 
         if (task.getDescription() == null || task.getDescription().trim().isEmpty() ||
-            task.getDue_date() == null || task.getObject() == null ||
+            task.getDue_date() == null ||
             task.getStatus_id() == null || task.getSubject() == null ||
-            task.getTask_priority() == null || task.getUser_id() == null ||
-            task.getId() == null) {
+            task.getTask_priority() == null || task.getUser_id() == null ) {
             throw new MissingFieldsException("One or more required fields are missing");
-        }
-
-        Task existingTask = taskService.findById(task.getId());
-        if (existingTask != null) {
-            throw new ResourceAlreadyExistsException("Task with ID " + task.getId() + " already exists.");
         }
 
         Task savedTask = taskService.saveTask(task);
@@ -63,10 +58,22 @@ public class TaskController {
         return ResponseEntity.ok().body(tasks);
     }
 
+    @PatchMapping("/tasks/{id}")
+    public ResponseEntity<Task> getByID(@PathVariable UUID id, @RequestBody Task updatedTask) {
+        Task task = taskService.updateTask(id, updatedTask);
+        return ResponseEntity.ok(task);
+    }
+
     @GetMapping("/tasks/{id}")
     public ResponseEntity<Task> getByID(@PathVariable UUID id) {
         Task task = taskService.findById(id);
         return ResponseEntity.ok(task);
+    }
+
+    @DeleteMapping("/tasks/{id}")
+    public String deleteTask(@PathVariable UUID id) {
+        taskService.deleteTask(id);
+        return "Task " + id + " deleted successfully";
     }
     
     @GetMapping("/tasks/{id}/start_progress")
@@ -89,10 +96,9 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{id}/reopen")
-    public ResponseEntity<?> reOpenTask(@PathVariable UUID id) {
+    public ResponseEntity<?> reopenTask(@PathVariable UUID id) {
         Task reopenedTask = taskService.reopenTask(id);
         return ResponseEntity.ok(reopenedTask);
     }
-
 }
 
