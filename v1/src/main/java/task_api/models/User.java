@@ -1,6 +1,7 @@
 package task_api.models;
 
 import java.util.List;
+import lombok.EqualsAndHashCode;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -16,6 +17,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "users")
+@EqualsAndHashCode(callSuper=false)
 public class User extends BaseModel {
 
     private String username;
