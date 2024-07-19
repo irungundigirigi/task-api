@@ -25,10 +25,7 @@ public class TaskService {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
     }
-    public Optional<Task> findByIdUpdate(UUID id) {
-        return taskRepository.findById(id);
-    }
-
+    
     public Page<Task> getTasks(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         return taskRepository.findAll(pageable);
