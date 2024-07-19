@@ -1,7 +1,7 @@
-## Build Issues
+## Build Issue
 
 ### Problem Description
-Sometimes, IDEs may not automatically refresh or recognize newly created or moved packages, leading to compilation errors or unresolved imports.
+Sometimes newly created or moved packages are not recognized when running the application, leading to compilation errors or unresolved imports.
 
 ### Solution
 **Build the Project Properly**:
