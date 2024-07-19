@@ -1,4 +1,4 @@
-## Build and IDE Issues
+## Build Issues
 
 ### Problem Description
 Sometimes, IDEs may not automatically refresh or recognize newly created or moved packages, leading to compilation errors or unresolved imports.
