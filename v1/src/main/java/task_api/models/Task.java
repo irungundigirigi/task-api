@@ -41,11 +41,11 @@ public class Task extends BaseModel {
     private Status_id status_id;
 
     @NotNull
-    @Size(min = 1, max = 40)
+    @Size(min = 5, max = 40)
     private String subject;
 
     @NotNull
-    @Size(min = 1, max = 1000)
+    @Size(min = 10, max = 1000)
     private String description;
 
     @NotNull
