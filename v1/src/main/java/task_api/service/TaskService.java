@@ -2,6 +2,7 @@ package task_api.service;
 
 import task_api.repository.TaskRepository;
 import task_api.models.Task;
+import task_api.dto.TaskUpdateDTO;
 import task_api.exceptions.TaskNotFoundException;
 import task_api.exceptions.IllegalStateException;
 import task_api.exceptions.MissingFieldsException;
@@ -75,7 +76,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task updateTask(UUID id, Task updatedTask) {
+    public Task updateTask(UUID id, TaskUpdateDTO updatedTask) {
         Task task = findById(id);
 
         if (updatedTask.getSubject() == null || updatedTask.getDescription() == null) {
