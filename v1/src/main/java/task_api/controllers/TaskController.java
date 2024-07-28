@@ -11,6 +11,7 @@ import task_api.exceptions.MissingFieldsException;
 import org.springframework.data.domain.Page;
 
 import task_api.models.Task;
+import task_api.dto.TaskUpdateDTO;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,7 +60,13 @@ public class TaskController {
     }
 
     @PatchMapping("/tasks/{id}")
-    public ResponseEntity<Task> getByID(@PathVariable UUID id, @RequestBody Task updatedTask) {
+    /**   
+     * public ResponseEntity<Task> getByID(@PathVariable UUID id, @RequestBody Task updatedTask) {
+            Task task = taskService.updateTask(id, updatedTask);
+            return ResponseEntity.ok(task);
+        }
+    */ 
+    public ResponseEntity<Task> getByID(@PathVariable UUID id, @RequestBody TaskUpdateDTO updatedTask) {
         Task task = taskService.updateTask(id, updatedTask);
         return ResponseEntity.ok(task);
     }
