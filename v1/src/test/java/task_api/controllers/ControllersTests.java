@@ -84,6 +84,42 @@ class ControllerTest extends MockMVCBaseClass {
     }
 
     @Test
+    public void testStartProgress() throws Exception {
+        UUID id  = UUID.fromString("cb5425f0-ed68-4336-bf6b-c2ff03c017a5");
+
+        mockMvc.perform(get("/api/v1/tasks/{id}/start_progress", id))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.status_id").value("in_progress"));
+    }
+
+    @Test
+    public void testStopProgress() throws Exception {
+        UUID id  = UUID.fromString("cb5425f0-ed68-4336-bf6b-c2ff03c017a1");
+
+        mockMvc.perform(get("/api/v1/tasks/{id}/stop_progress", id))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.status_id").value("open"));
+    }
+
+    @Test
+    public void testCloseTask() throws Exception {
+        UUID id  = UUID.fromString("cb5425f0-ed68-4336-bf6b-c2ff03c017a5");
+
+        mockMvc.perform(get("/api/v1/tasks/{id}/close", id))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.status_id").value("closed"));
+    }
+
+    @Test
+    public void testReopenTask() throws Exception {
+        UUID id  = UUID.fromString("cb5425f0-ed68-4336-bf6b-c2ff03c017a2");
+
+        mockMvc.perform(get("/api/v1/tasks/{id}/reopen", id))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.status_id").value("open"));
+    }
+
+    @Test
     public void testDeleteTask() throws Exception {
         UUID id = UUID.fromString("cb5425f0-ed68-4336-bf6b-c2ff03c017a5");
 
