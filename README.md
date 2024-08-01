@@ -12,9 +12,9 @@ A task management API built on Springboot framework and Postgresql database.
 | GET     | /api/v1/tasks/{id}/close            | Public  | Changes the status of an open or in-progress task to closed                  |
 | GET  | /api/v1/tasks/{id}/reopen              | Public  | Changes the status of a closed task to open.                 |
 | PATCH  | /api/v1/tasks                        | Public  | Modifies an existing task.                         |
-| DELETE    | /api/v1/tasks                     | Public | Deletes a specific task                          |
-| GET     | /api/v1/tasks/taskID                | Private | View a Task                              |
-| GET     | /api/v1/tasks                       | Private | View all Tasks                           |
+| DELETE    | /api/v1/tasks/{id}                | Public  | Deletes a specific task by id.                      |
+
+
 ## Build Issue
 
 ### Problem Description
