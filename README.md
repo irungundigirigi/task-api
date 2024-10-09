@@ -28,9 +28,62 @@ INSERT INTO tasks (id, created_at, updated_at, object, user_id, task_priority, s
 ('cbe9bafe-7e3e-4c1c-9e1f-7f94aa1c57d1', NOW(), NOW(), 'task', 'd7e6e4b8-8b45-42e1-b37f-60b5d7f9cbe2', 'normal', 'in_progress', 'Team meeting', 'Discuss project updates and next steps.', '2024-10-10 14:00:00');
 
 ./gradlew bootRun
-./gradlew bootRun
 
 # Open your curl/open in browser http://localhost:8080/api/v1/tasks
+
+{
+  "totalPages": 1,
+  "totalElements": 2,
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "sorted": false,
+      "empty": true,
+      "unsorted": true
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "size": 10,
+  "content": [
+    {
+      "id": "b9e42a4b-f3d3-4e87-8c61-1b8c9c2a9e05",
+      "created_at": "2024-10-09T08:09:24.697+00:00",
+      "updated_at": "2024-10-09T08:09:24.697+00:00",
+      "object": "task",
+      "user_id": "a6e9b97c-d3ee-4b28-b5b6-1956b348ee24",
+      "task_priority": "high",
+      "status_id": "open",
+      "subject": "Finish report",
+      "description": "Complete the annual financial report by end of the week.",
+      "due_date": "2024-10-12 17:00:00"
+    },
+    {
+      "id": "cbe9bafe-7e3e-4c1c-9e1f-7f94aa1c57d1",
+      "created_at": "2024-10-09T08:09:24.697+00:00",
+      "updated_at": "2024-10-09T08:09:24.697+00:00",
+      "object": "task",
+      "user_id": "d7e6e4b8-8b45-42e1-b37f-60b5d7f9cbe2",
+      "task_priority": "normal",
+      "status_id": "in_progress",
+      "subject": "Team meeting",
+      "description": "Discuss project updates and next steps.",
+      "due_date": "2024-10-10 14:00:00"
+    }
+  ],
+  "number": 0,
+  "sort": {
+    "sorted": false,
+    "empty": true,
+    "unsorted": true
+  },
+  "first": true,
+  "last": true,
+  "numberOfElements": 2,
+  "empty": false
+}
 
 ```
 
