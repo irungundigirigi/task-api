@@ -1,6 +1,19 @@
 ## Task API
 A task management API built on Springboot framework and Postgresql database.
 
+## Installation
+```
+git clone git@github.com:irungundigirigi/task-api.git
+cd task-api/v1
+# Create task_api database
+sudo su postgres
+psql
+CREATE DATABASE task_api;
+./gradlew bootRun
+./gradlew bootRun
+
+```
+
 ### API Endpoints
 | Method | Endpoints                         | Access  | Description                              |
 | ------- | ---------------------------------- | ------- | ---------------------------------------- |
