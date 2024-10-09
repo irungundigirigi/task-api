@@ -9,6 +9,18 @@ cd task-api/v1
 sudo su postgres
 psql
 CREATE DATABASE task_api;
+CREATE TABLE tasks (
+  id UUID PRIMARY KEY,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  object VARCHAR(40),
+  user_id UUID,
+  task_priority VARCHAR(10),
+  status_id VARCHAR(10),
+  subject VARCHAR(40),
+  description VARCHAR(100),
+  due_date  TIMESTAMP
+);
 ./gradlew bootRun
 ./gradlew bootRun
 
