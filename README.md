@@ -15,14 +15,22 @@ CREATE TABLE tasks (
   updated_at TIMESTAMP,
   object VARCHAR(40),
   user_id UUID,
-  task_priority VARCHAR(10),
-  status_id VARCHAR(10),
+  task_priority VARCHAR(20),
+  status_id VARCHAR(20),
   subject VARCHAR(40),
   description VARCHAR(100),
   due_date  TIMESTAMP
 );
+# Insert sample data into the tasks table
+INSERT INTO tasks (id, created_at, updated_at, object, user_id, task_priority, status_id, subject, description, due_date) VALUES
+('b9e42a4b-f3d3-4e87-8c61-1b8c9c2a9e05', NOW(), NOW(), 'task', 'a6e9b97c-d3ee-4b28-b5b6-1956b348ee24', 'high', 'open', 'Finish report', 'Complete the annual financial report by end of the week.', '2024-10-12 17:00:00'),
+
+('cbe9bafe-7e3e-4c1c-9e1f-7f94aa1c57d1', NOW(), NOW(), 'task', 'd7e6e4b8-8b45-42e1-b37f-60b5d7f9cbe2', 'normal', 'in_progress', 'Team meeting', 'Discuss project updates and next steps.', '2024-10-10 14:00:00');
+
 ./gradlew bootRun
 ./gradlew bootRun
+
+# Open your curl/open in browser http://localhost:8080/api/v1/tasks
 
 ```
 
