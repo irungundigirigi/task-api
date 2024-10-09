@@ -22,6 +22,8 @@ public class User extends BaseModel {
 
     private String username;
     private String password;
+    private String email;
+    private String password;
 
     @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
     private List<Task> tasks;
