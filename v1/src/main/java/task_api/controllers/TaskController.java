@@ -12,7 +12,7 @@ import org.springframework.data.domain.Page;
 
 import task_api.models.Task;
 import task_api.dto.TaskUpdateDTO;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:5173") 
 public class TaskController {
     
     @Autowired
