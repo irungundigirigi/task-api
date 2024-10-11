@@ -84,6 +84,17 @@ INSERT INTO tasks (id, created_at, updated_at, object, user_id, task_priority, s
   "numberOfElements": 2,
   "empty": false
 }
+CREARE TABLE USERS;
+
+CREATE TABLE users (
+  id UUID PRIMARY KEY,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  object VARCHAR(40),
+  username VARCHAR(50),
+  password VARCHAR(20),
+  email VARCHAR(60),
+);
 
 ```
 
@@ -109,6 +120,6 @@ Sometimes newly created or moved packages are not recognized when running the ap
 ### Solution
 **Build the Project Properly**:
    - Use Maven or Gradle to build the project:
-     - For Maven: Run `mvn clean install` in the terminal/command prompt.
+     - For Maven: Run `mvn clean install / ./gradlew clean build` in the terminal/command prompt.
      - For Gradle: Run `./gradlew clean build` in the terminal/command prompt.
 Running these commands ensures that all classes are compiled correctly and dependencies are resolved.
