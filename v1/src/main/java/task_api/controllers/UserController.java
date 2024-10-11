@@ -5,6 +5,7 @@ import task_api.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,13 @@ public class UserController {
     @GetMapping("/api/v1/users")
     public List<User> getUsers(){
         return userRepo.findAll();
+    }
+
+    //get user by Id
+    @GetMapping("/api/v1/users/{id}")
+    public ResponseEntity<User> getUserByID(@PathVariable UUID id){
+        User user = userRepo.findById(id).get();
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/api/v1/users")
