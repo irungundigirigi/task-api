@@ -50,7 +50,7 @@ public class Task extends BaseModel {
 
     @NotNull
     @Size(max = 50)
-    private String due_date;
+    private Date due_date;
 
     public Task() {
         this.object = this.getClass().getSimpleName(); 
